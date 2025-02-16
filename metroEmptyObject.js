@@ -1,0 +1,2 @@
+// metroEmptyObject.js
+module.exports = {};

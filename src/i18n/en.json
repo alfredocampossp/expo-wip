@@ -1,0 +1,492 @@
+{
+  "common": {
+    "error": {
+      "unknown": "Ocurrió un error inesperado",
+      "login": "Error al iniciar sesión",
+      "profile": "Error al cargar el perfil",
+      "storage": {
+        "limit": "Límite de almacenamiento excedido",
+        "upload": "Error al subir el archivo"
+      },
+      "registration": "Error al registrarse"
+    },
+    "success": {
+      "profileSaved": "Perfil guardado exitosamente",
+      "mediaUploaded": "Archivo subido con éxito",
+      "mediaDeleted": "Archivo eliminado con éxito"
+    },
+    "button": {
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "upload": "Subir",
+      "close": "Cerrar",
+      "back": "Atrás",
+      "create": "Crear",
+      "login": "Iniciar Sesión",
+      "signOut": "Cerrar Sesión",
+      "enabled": "Activado",
+      "disabled": "Desactivado",
+      "completeProfile": "Completar Perfil",
+      "register": "Registrarse"
+    }
+  },
+  "auth": {
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "error": {
+      "emptyFields": "Complete todos los campos obligatorios",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "registration": "Error al registrarse"
+    }
+  },
+  "screens": {
+    "login": {
+      "title": "Iniciar Sesión",
+      "createAccount": "Crear Cuenta"
+    },
+    "register": {
+      "title": "Crear Cuenta",
+      "changeRole": "Cambiar Rol",
+      "backToLogin": "Volver al Inicio de Sesión",
+      "role": {
+        "label": "Soy:",
+        "artist": "Artista",
+        "contractor": "Contratante"
+      }
+    },
+    "homeArtist": {
+      "title": "Inicio de Artista",
+      "welcome": "Bienvenido a tu panel de artista"
+    },
+    "homeContractor": {
+      "title": "Inicio de Contratante",
+      "welcome": "Bienvenido a tu panel de contratante"
+    }
+  },
+  "navigation": {
+    "home": "Inicio",
+    "profile": "Perfil",
+    "logout": "Salir",
+    "events": "Eventos",
+    "portfolio": "Portafolio",
+    "chats": "Chats",
+    "notifications": "Notificaciones",
+    "dashboard": "Panel",
+    "myAgenda": "Mi Agenda",
+    "myEvents": "Mis Eventos",
+    "searchEvents": "Buscar Eventos",
+    "searchArtists": "Buscar Artistas",
+    "plans": "Planes",
+    "admin": "Admin"
+  },
+  "profile": {
+    "artist": {
+      "title": "Perfil del Artista",
+      "minimumCache": "Caché Mínimo",
+      "maximumCache": "Caché Máximo",
+      "mainCity": "Ciudad Principal",
+      "coverageRadius": "Radio de Cobertura",
+      "genres": "Géneros Musicales",
+      "description": "Descripción"
+    },
+    "contractor": {
+      "title": "Perfil del Contratante",
+      "mainAddress": "Dirección Principal",
+      "venueCapacity": "Capacidad del Lugar",
+      "eventTypes": "Tipos de Evento",
+      "description": "Descripción"
+    }
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "upload": {
+      "title": "Subir Archivo",
+      "type": "Tipo de Archivo",
+      "title_field": "Título",
+      "description": "Descripción"
+    },
+    "media": {
+      "photo": "Foto",
+      "video": "Video",
+      "audio": "Audio"
+    },
+    "storage": {
+      "used": "Almacenamiento Usado",
+      "total": "Almacenamiento Total",
+      "free": "Almacenamiento Libre"
+    }
+  },
+  "events": {
+    "title": "Eventos",
+    "createButton": "Crear Evento",
+    "create": {
+      "title": "Crear Evento",
+      "submit": "Crear Evento"
+    },
+    "form": {
+      "title": "Título del Evento",
+      "startDate": "Fecha de Inicio",
+      "endDate": "Fecha de Término",
+      "location": "Ubicación",
+      "eventType": "Tipo de Evento",
+      "cache": "Caché",
+      "minCache": "Caché Mínimo",
+      "maxCache": "Caché Máximo",
+      "styles": "Estilos Musicales"
+    },
+    "type": {
+      "show": "Show",
+      "festival": "Festival"
+    },
+    "status": {
+      "open": "Abierto",
+      "closed": "Cerrado",
+      "canceled": "Cancelado",
+      "completed": "Completado"
+    },
+    "cache": "Caché",
+    "apply": "Postularse",
+    "viewCandidacies": "Ver Candidaturas",
+    "error": {
+      "requiredFields": "Complete todos los campos obligatorios",
+      "eventTypeRestricted": "Este tipo de evento está restringido a planes de pago",
+      "styleLimit": "El plan gratuito solo permite un estilo musical",
+      "noCredits": "Créditos no disponibles",
+      "alreadyApplied": "Ya te has postulado a este evento"
+    },
+    "success": {
+      "created": "Evento creado con éxito",
+      "applied": "Postulación enviada con éxito",
+      "statusUpdated": "Estado actualizado con éxito",
+      "approved": "Postulación aprobada",
+      "rejected": "Postulación rechazada"
+    },
+    "candidacies": {
+      "title": "Candidaturas",
+      "approve": "Aprobar",
+      "reject": "Rechazar",
+      "status": {
+        "pending": "Pendiente",
+        "approved": "Aprobada",
+        "rejected": "Rechazada"
+      }
+    }
+  },
+  "search": {
+    "title": "Buscar Eventos",
+    "artists": {
+      "title": "Buscar Artistas"
+    },
+    "startDate": "Fecha Inicial",
+    "endDate": "Fecha Final",
+    "styles": "Estilos Musicales",
+    "location": "Ubicación",
+    "locationPlaceholder": "Ciudad o Región",
+    "radius": "Radio",
+    "minRating": "Calificación Mínima",
+    "cache": "Rango de Caché",
+    "minCache": "Mínimo",
+    "maxCache": "Máximo",
+    "sortBy": "Ordenar Por",
+    "sortDate": "Fecha",
+    "sortRating": "Calificación",
+    "sortDistance": "Distancia",
+    "submit": "Buscar",
+    "noResults": "No se encontraron resultados",
+    "cache": "Caché"
+  },
+  "agenda": {
+    "title": "Agenda",
+    "addBlock": "Agregar Bloque de Tiempo",
+    "startDate": "Fecha Inicial",
+    "endDate": "Fecha Final",
+    "blocksLimit": "Usando {{current}}/{{max}} bloques",
+    "available": "Disponible",
+    "unavailable": "No disponible",
+    "status": {
+      "free": "Libre",
+      "busy": "Ocupado"
+    },
+    "error": {
+      "maxBlocks": "Se alcanzó el límite máximo de bloques",
+      "invalidDates": "Fechas inválidas",
+      "endBeforeStart": "La fecha final debe ser posterior a la inicial",
+      "dateConflict": "Conflicto con un bloque existente",
+      "deleteBusy": "No se puede eliminar un bloque ocupado"
+    }
+  },
+  "autoOffer": {
+    "title": "Configuración de Auto Oferta",
+    "enable": "Habilitar Auto Oferta",
+    "minCache": "Caché Mínimo",
+    "genres": "Géneros Musicales",
+    "description": "La Auto Oferta se postulará automáticamente a eventos que coincidan con tus criterios",
+    "error": {
+      "genresLimit": "El plan gratuito solo permite 3 géneros"
+    },
+    "success": {
+      "saved": "Configuración guardada con éxito"
+    }
+  },
+  "autoPromote": {
+    "title": "Configuración de Auto Promoción",
+    "enable": "Habilitar Auto Promoción",
+    "description": "La Auto Promoción te notificará sobre eventos que coincidan con tu perfil",
+    "freeWarning": "El plan gratuito tiene funciones de promoción limitadas",
+    "success": {
+      "saved": "Configuración guardada con éxito"
+    }
+  },
+  "plans": {
+    "title": "Planes",
+    "current": "Plan Actual: {{plan}}",
+    "upgrade": {
+      "button": "Mejorar"
+    },
+    "cancel": {
+      "button": "Cancelar Plan",
+      "title": "Plan Cancelado",
+      "message": "Tu plan ha sido cancelado"
+    },
+    "alert": {
+      "webOnly": "Solo Web",
+      "webOnlyMessage": "La gestión de planes solo está disponible en la plataforma web"
+    },
+    "success": {
+      "title": "Éxito",
+      "message": "Plan actualizado con éxito"
+    }
+  },
+  "chats": {
+    "title": "Chats",
+    "empty": "No hay chats todavía",
+    "error": {
+      "dailyLimit": "Se alcanzó el límite diario de mensajes"
+    }
+  },
+  "chat": {
+    "title": "Chat",
+    "placeholder": "Escribe un mensaje..."
+  },
+  "notifications": {
+    "title": "Notificaciones",
+    "empty": "No hay notificaciones",
+    "type": {
+      "chat": "Nuevo Mensaje",
+      "event": "Actualización de Evento",
+      "candidacy": "Actualización de Postulación"
+    }
+  },
+  "reviews": {
+    "pending": {
+      "title": "Reseñas Pendientes",
+      "empty": "No hay reseñas pendientes",
+      "writeReview": "Escribir Reseña"
+    },
+    "form": {
+      "title": "Evaluar a {{name}}",
+      "rating": "Calificación",
+      "comment": "Comentario",
+      "commentPlaceholder": "Escribe tu reseña...",
+      "submit": "Enviar Reseña"
+    },
+    "success": {
+      "submitted": "Reseña enviada con éxito"
+    }
+  },
+  "admin": {
+    "title": "Panel de Administración",
+    "accessDenied": "Acceso Denegado",
+    "notAuthorized": "No tienes autorización para acceder a esta área",
+    "menu": {
+      "styles": "Estilos Musicales",
+      "eventTypes": "Tipos de Evento",
+      "feedbackCriteria": "Criterios de Retroalimentación",
+      "plans": "Planes",
+      "notifications": "Notificaciones",
+      "users": "Usuarios"
+    },
+    "dashboard": {
+      "title": "Panel de Administración",
+      "viewAll": "Ver Todo",
+      "users": {
+        "title": "Usuarios",
+        "total": "Total de Usuarios",
+        "artists": "Artistas",
+        "contractors": "Contratantes",
+        "newUsers": "Nuevos Usuarios"
+      },
+      "events": {
+        "title": "Eventos",
+        "total": "Total de Eventos",
+        "shows": "Shows",
+        "festivals": "Festivales",
+        "newEvents": "Nuevos Eventos"
+      },
+      "ratings": {
+        "title": "Calificaciones",
+        "average": "Calificación Promedio",
+        "total": "Total de Reseñas",
+        "newReviews": "Nuevas Reseñas",
+        "topArtists": "Mejores Artistas",
+        "topContractors": "Mejores Contratantes"
+      }
+    },
+    "styles": {
+      "title": "Estilos Musicales",
+      "form": {
+        "name": "Nombre del Estilo",
+        "namePlaceholder": "Ingresa el nombre del estilo"
+      },
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "success": {
+        "created": "Estilo creado con éxito",
+        "updated": "Estilo actualizado con éxito",
+        "activated": "Estilo activado con éxito",
+        "deactivated": "Estilo desactivado con éxito",
+        "deleted": "Estilo eliminado con éxito"
+      },
+      "delete": {
+        "title": "Eliminar Estilo",
+        "message": "¿Estás seguro de que quieres eliminar este estilo?"
+      }
+    },
+    "eventTypes": {
+      "title": "Tipos de Evento",
+      "form": {
+        "name": "Nombre del Tipo",
+        "namePlaceholder": "Ingresa el nombre del tipo",
+        "description": "Descripción",
+        "descriptionPlaceholder": "Ingresa la descripción",
+        "plans": "Planes Disponibles"
+      },
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "success": {
+        "created": "Tipo de evento creado con éxito",
+        "updated": "Tipo de evento actualizado con éxito",
+        "activated": "Tipo de evento activado con éxito",
+        "deactivated": "Tipo de evento desactivado con éxito"
+      }
+    },
+    "feedbackCriteria": {
+      "title": "Criterios de Retroalimentación",
+      "form": {
+        "name": "Nombre del Criterio",
+        "namePlaceholder": "Ingresa el nombre del criterio",
+        "weight": "Peso",
+        "appliesTo": "Se Aplica a"
+      },
+      "appliesTo": {
+        "label": "Se Aplica a",
+        "artist": "Artista",
+        "contractor": "Contratante",
+        "both": "Ambos"
+      },
+      "weight": "Peso",
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "success": {
+        "created": "Criterio de retroalimentación creado con éxito",
+        "updated": "Criterio de retroalimentación actualizado con éxito",
+        "activated": "Criterio de retroalimentación activado con éxito",
+        "deactivated": "Criterio de retroalimentación desactivado con éxito"
+      }
+    },
+    "plans": {
+      "title": "Planes",
+      "form": {
+        "name": "Nombre del Plan",
+        "namePlaceholder": "Ingresa el nombre del plan",
+        "storageLimit": "Límite de Almacenamiento (MB)",
+        "credits": "Créditos Mensuales",
+        "price": "Precio",
+        "eventTypes": "Tipos de Evento Permitidos",
+        "features": "Características",
+        "featuresPlaceholder": "Una característica por línea"
+      },
+      "storage": "Almacenamiento",
+      "credits": "Créditos",
+      "price": "Precio",
+      "eventTypes": "Tipos de Evento",
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "success": {
+        "created": "Plan creado con éxito",
+        "updated": "Plan actualizado con éxito",
+        "activated": "Plan activado con éxito",
+        "deactivated": "Plan desactivado con éxito"
+      }
+    },
+    "notifications": {
+      "title": "Notificaciones",
+      "form": {
+        "subject": "Asunto",
+        "subjectPlaceholder": "Ingresa el asunto de la notificación",
+        "message": "Mensaje",
+        "messagePlaceholder": "Ingresa el mensaje de la notificación",
+        "target": "Usuarios Destinatarios",
+        "send": "Enviar Notificación"
+      },
+      "target": {
+        "all": "Todos los Usuarios",
+        "artist": "Solo Artistas",
+        "contractor": "Solo Contratantes"
+      },
+      "history": {
+        "title": "Historial de Notificaciones"
+      },
+      "success": {
+        "sent": "Notificación enviada con éxito"
+      }
+    },
+    "users": {
+      "title": "Usuarios",
+      "search": "Buscar usuarios...",
+      "filterRole": "Filtrar por Rol",
+      "filterPlan": "Filtrar por Plan",
+      "sortBy": "Ordenar Por",
+      "roles": {
+        "all": "Todos los Roles",
+        "artist": "Artistas",
+        "contractor": "Contratantes"
+      },
+      "plans": {
+        "all": "Todos los Planes",
+        "free": "Gratuito",
+        "paid": "De Pago"
+      },
+      "sort": {
+        "email": "Correo",
+        "rating": "Calificación",
+        "date": "Fecha"
+      },
+      "credits": "Créditos",
+      "storage": "Almacenamiento Usado",
+      "joined": "Ingresó el",
+      "badges": {
+        "admin": "Admin",
+        "inactive": "Inactivo"
+      },
+      "success": {
+        "adminAdded": "Privilegios de administrador concedidos",
+        "adminRemoved": "Privilegios de administrador removidos",
+        "activated": "Usuario activado",
+        "deactivated": "Usuario desactivado",
+        "creditsReset": "Créditos reiniciados con éxito"
+      }
+    }
+  }
+}
