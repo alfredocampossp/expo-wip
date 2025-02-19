@@ -8,7 +8,6 @@ import { doc, getDoc } from 'firebase/firestore';
 import { Ionicons } from '@expo/vector-icons';
 import i18n from '../src/i18n';
 import { Layout } from '../src/components/Layout';
-import { Navigation } from '../src/components/Navigation';
 
 export default function HomeArtistScreen() {
   const [hasProfile, setHasProfile] = useState<boolean>(false);
@@ -38,33 +37,30 @@ export default function HomeArtistScreen() {
   };
 
   return (
-    <Layout>
-      <View style={styles.header}>
-        <Ionicons name="person" size={32} color="#007AFF" />
-        <Text style={styles.title}>{i18n.t('screens.homeArtist.title')}</Text>
+    <Layout hideNavigation={false}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Ionicons name="person" size={32} color="#007AFF" />
+          <Text style={styles.title}>{i18n.t('screens.homeArtist.title')}</Text>
+        </View>
+        
+        <Text style={styles.subtitle}>{i18n.t('screens.homeArtist.welcome')}</Text>
+        
+        {!hasProfile && (
+          <Button
+            title={i18n.t('common.button.completeProfile')}
+            onPress={() => router.push('/edit-artist-profile')}
+          />
+        )}
       </View>
-      
-      <Text style={styles.subtitle}>{i18n.t('screens.homeArtist.welcome')}</Text>
-      
-      {!hasProfile && (
-        <Button
-          title={i18n.t('common.button.completeProfile')}
-          onPress={() => router.push('/edit-artist-profile')}
-        />
-      )}
-      
-      <Button 
-        title={i18n.t('common.button.signOut')} 
-        onPress={handleSignOut} 
-        variant="secondary" 
-      />
-      
-      <Navigation />
     </Layout>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   header: {
     alignItems: 'center',
     marginBottom: 20,

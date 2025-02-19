@@ -20,7 +20,11 @@ export default function Index() {
         const userDoc = await getDoc(doc(db, 'users', auth.currentUser.uid));
         if (userDoc.exists()) {
           const userData = userDoc.data();
-          setRedirectTo(userData.role === 'artist' ? '/home-artist' : '/home-contractor');
+          if (userData.isAdmin) {
+            setRedirectTo('/admin');
+          } else {
+            setRedirectTo(userData.role === 'artist' ? '/home-artist' : '/home-contractor');
+          }
         } else {
           setRedirectTo('/login');
         }

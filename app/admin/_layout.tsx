@@ -4,6 +4,9 @@ import { Stack } from 'expo-router';
 import { auth, db } from '../../src/services/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { AdminGuard } from '../../src/components/AdminGuard';
+import { Layout } from '../../src/components/Layout';
+import i18n from '../../src/i18n';
+import type { User } from '../../src/types';
 
 export default function AdminLayout() {
   const [loading, setLoading] = useState(true);
@@ -21,7 +24,10 @@ export default function AdminLayout() {
 
     try {
       const userDoc = await getDoc(doc(db, 'users', auth.currentUser.uid));
-      setIsAdmin(userDoc.exists() && userDoc.data()?.isAdmin === true);
+      if (userDoc.exists()) {
+        const userData = userDoc.data() as User;
+        setIsAdmin(userData.role === 'admin');
+      }
     } catch (error) {
       console.error('Error checking admin status:', error);
     } finally {
@@ -31,73 +37,42 @@ export default function AdminLayout() {
 
   if (loading) {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="#007AFF" />
-      </View>
+      <Layout hideNavigation>
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="#007AFF" />
+          <Text style={styles.loadingText}>{i18n.t('common.loading')}</Text>
+        </View>
+      </Layout>
     );
   }
 
   return (
     <AdminGuard isAdmin={isAdmin}>
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{
-            title: 'Admin Panel',
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="styles"
-          options={{
-            title: 'Musical Styles',
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="event-types"
-          options={{
-            title: 'Event Types',
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="feedback-criteria"
-          options={{
-            title: 'Feedback Criteria',
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="plans"
-          options={{
-            title: 'Plans',
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="notifications"
-          options={{
-            title: 'Notifications',
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="users"
-          options={{
-            title: 'Users',
-            headerShown: false,
-          }}
-        />
-      </Stack>
+      <Layout>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="dashboard" />
+          <Stack.Screen name="users" />
+          <Stack.Screen name="styles" />
+          <Stack.Screen name="event-types" />
+          <Stack.Screen name="feedback-criteria" />
+          <Stack.Screen name="plans" />
+          <Stack.Screen name="notifications" />
+        </Stack>
+      </Layout>
     </AdminGuard>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 20,
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: '#666',
   },
 });

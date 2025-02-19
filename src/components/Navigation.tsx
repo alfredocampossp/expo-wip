@@ -53,20 +53,40 @@ export function Navigation() {
     );
   }
 
+  // Se não há usuário logado, não exibe menu
   if (!user) {
-    // Usuário não logado ou ainda sem dados
     return null;
   }
 
+  const isAdmin = !!user.isAdmin;
   const isArtist = user.role === 'artist';
   const isContractor = user.role === 'contractor';
-  const isAdmin = !!user.isAdmin;
 
-  // Rotas básicas conforme o perfil
-  const homeRoute = isArtist ? '/home-artist' : '/home-contractor';
-  const profileRoute = isArtist ? '/edit-artist-profile' : '/edit-contractor-profile';
-  const dashboardRoute = isArtist ? '/artist-dashboard' : '/contractor-dashboard';
-  const portfolioRoute = isArtist ? '/portfolio-artist' : '/portfolio-contractor';
+  // Definindo rotas
+  const homeRoute = isAdmin
+    ? '/admin'
+    : isArtist
+    ? '/home-artist'
+    : '/home-contractor';
+
+  const dashboardRoute = isAdmin
+    ? '/admin/dashboard'
+    : isArtist
+    ? '/artist-dashboard'
+    : '/contractor-dashboard';
+
+  const profileRoute = isArtist
+    ? '/edit-artist-profile'
+    : isContractor
+    ? '/edit-contractor-profile'
+    : '/admin';
+
+  const portfolioRoute = isArtist
+    ? '/portfolio-artist'
+    : isContractor
+    ? '/portfolio-contractor'
+    : '/admin';
+
   const eventsOrAgendaRoute = isArtist ? '/artist-agenda' : '/events';
   const searchRoute = isArtist ? '/events-search-artist' : '/artists-advanced-search';
 
@@ -90,42 +110,41 @@ export function Navigation() {
         <Text style={styles.navText}>{i18n.t('navigation.profile')}</Text>
       </TouchableOpacity>
 
-      {/* PORTFÓLIO */}
-      <TouchableOpacity style={styles.navItem} onPress={() => handleNavigation(portfolioRoute)}>
-        <Ionicons name="images-outline" size={24} color="#007AFF" />
-        <Text style={styles.navText}>{i18n.t('navigation.portfolio')}</Text>
-      </TouchableOpacity>
+      {/* PORTFÓLIO (se não admin) */}
+      {!isAdmin && (
+        <TouchableOpacity style={styles.navItem} onPress={() => handleNavigation(portfolioRoute)}>
+          <Ionicons name="images-outline" size={24} color="#007AFF" />
+          <Text style={styles.navText}>{i18n.t('navigation.portfolio')}</Text>
+        </TouchableOpacity>
+      )}
 
-      {/* EVENTS (CONTRATANTE) ou AGENDA (ARTISTA) */}
-      <TouchableOpacity style={styles.navItem} onPress={() => handleNavigation(eventsOrAgendaRoute)}>
-        {isArtist ? (
-          <>
-            <Ionicons name="calendar-outline" size={24} color="#007AFF" />
-            <Text style={styles.navText}>{i18n.t('navigation.myAgenda')}</Text>
-          </>
-        ) : (
-          <>
-            <Ionicons name="calendar-outline" size={24} color="#007AFF" />
-            <Text style={styles.navText}>{i18n.t('navigation.myEvents')}</Text>
-          </>
-        )}
-      </TouchableOpacity>
+      {/* AGENDA (ARTISTA) / EVENTOS (CONTRATANTE) */}
+      {!isAdmin && (
+        <TouchableOpacity style={styles.navItem} onPress={() => handleNavigation(eventsOrAgendaRoute)}>
+          <Ionicons name="calendar-outline" size={24} color="#007AFF" />
+          <Text style={styles.navText}>
+            {isArtist ? i18n.t('navigation.myAgenda') : i18n.t('navigation.myEvents')}
+          </Text>
+        </TouchableOpacity>
+      )}
 
-      {/* SEARCH (EVENTOS / ARTISTAS) */}
-      <TouchableOpacity style={styles.navItem} onPress={() => handleNavigation(searchRoute)}>
-        <Ionicons name="search-outline" size={24} color="#007AFF" />
-        <Text style={styles.navText}>
-          {isArtist ? i18n.t('navigation.searchEvents') : i18n.t('navigation.searchArtists')}
-        </Text>
-      </TouchableOpacity>
+      {/* BUSCAR (EVENTOS/ARTISTAS) */}
+      {!isAdmin && (
+        <TouchableOpacity style={styles.navItem} onPress={() => handleNavigation(searchRoute)}>
+          <Ionicons name="search-outline" size={24} color="#007AFF" />
+          <Text style={styles.navText}>
+            {isArtist ? i18n.t('navigation.searchEvents') : i18n.t('navigation.searchArtists')}
+          </Text>
+        </TouchableOpacity>
+      )}
 
-      {/* PLANS */}
+      {/* PLANOS */}
       <TouchableOpacity style={styles.navItem} onPress={() => handleNavigation('/plans')}>
         <Ionicons name="card-outline" size={24} color="#007AFF" />
         <Text style={styles.navText}>{i18n.t('navigation.plans')}</Text>
       </TouchableOpacity>
 
-      {/* NOTIFICATIONS */}
+      {/* NOTIFICAÇÕES */}
       <TouchableOpacity style={styles.navItem} onPress={() => handleNavigation('/notifications')}>
         <Ionicons name="notifications-outline" size={24} color="#007AFF" />
         <Text style={styles.navText}>{i18n.t('navigation.notifications')}</Text>
@@ -137,7 +156,7 @@ export function Navigation() {
         <Text style={styles.navText}>{i18n.t('navigation.chats')}</Text>
       </TouchableOpacity>
 
-      {/* ADMIN (opcional) */}
+      {/* ADMIN PANEL */}
       {isAdmin && (
         <TouchableOpacity style={styles.navItem} onPress={() => handleNavigation('/admin')}>
           <Ionicons name="settings-outline" size={24} color="#007AFF" />
@@ -178,7 +197,7 @@ const styles = StyleSheet.create({
   navItem: {
     alignItems: 'center',
     padding: 10,
-    width: '25%', // Ajuste conforme desejado para exibição no Web/Mobile
+    width: '25%',
   },
   navText: {
     marginTop: 5,

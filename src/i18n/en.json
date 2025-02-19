@@ -88,7 +88,8 @@
       "minimumCache": "Caché Mínimo",
       "maximumCache": "Caché Máximo",
       "mainCity": "Ciudad Principal",
-      "coverageRadius": "Radio de Cobertura",
+      "coverageRadius": "Coverage Radius",
+      "coverageRadiusDisabled": "Coverage radius is only available in paid plans",
       "genres": "Géneros Musicales",
       "description": "Descripción"
     },
@@ -195,27 +196,38 @@
     "sortRating": "Calificación",
     "sortDistance": "Distancia",
     "submit": "Buscar",
-    "noResults": "No se encontraron resultados",
-    "cache": "Caché"
+    "noResults": "No se encontraron resultados"
   },
   "agenda": {
-    "title": "Agenda",
-    "addBlock": "Agregar Bloque de Tiempo",
-    "startDate": "Fecha Inicial",
-    "endDate": "Fecha Final",
-    "blocksLimit": "Usando {{current}}/{{max}} bloques",
-    "available": "Disponible",
-    "unavailable": "No disponible",
+    "title": "Artist's Calendar",
+    "tabs": {
+      "calendar": "Calendar",
+      "confirmed": "Confirmed",
+      "pending": "Pending"
+    },
+    "addBlock": "Add Block",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "blocksLimit": "Using {{current}}/{{max}} blocks",
+    "available": "Available",
+    "unavailable": "Unavailable",
     "status": {
-      "free": "Libre",
-      "busy": "Ocupado"
+      "free": "Free",
+      "busy": "Busy"
+    },
+    "noConfirmedEvents": "No confirmed events",
+    "noPendingEvents": "No pending applications",
+    "cancelCandidacy": "Cancel Application",
+    "success": {
+      "candidacyCanceled": "Application canceled successfully"
     },
     "error": {
-      "maxBlocks": "Se alcanzó el límite máximo de bloques",
-      "invalidDates": "Fechas inválidas",
-      "endBeforeStart": "La fecha final debe ser posterior a la inicial",
-      "dateConflict": "Conflicto con un bloque existente",
-      "deleteBusy": "No se puede eliminar un bloque ocupado"
+      "maxBlocks": "Maximum block limit reached",
+      "invalidDates": "Invalid dates",
+      "endBeforeStart": "End date must be after start date",
+      "dateConflict": "Conflict with existing block",
+      "deleteBusy": "Cannot delete a busy block",
+      "editBusy": "Cannot edit a busy block"
     }
   },
   "autoOffer": {

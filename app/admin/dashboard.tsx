@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Platform } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Platform, TouchableOpacity } from 'react-native';
 import { Layout } from '../../src/components/Layout';
 import { Button } from '../../src/components/Button';
 import { auth, db } from '../../src/services/firebase';
-import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { Ionicons } from '@expo/vector-icons';
 import { format, subDays, isWithinInterval, startOfDay, endOfDay } from 'date-fns';
 import { router } from 'expo-router';
@@ -14,8 +14,8 @@ import type { User, Event } from '../../src/types';
 let Line: any;
 let Pie: any;
 if (Platform.OS === 'web') {
-  const { Line: WebLine, Pie: WebPie } = require('react-chartjs-2');
   const { Chart, registerables } = require('chart.js');
+  const { Line: WebLine, Pie: WebPie } = require('react-chartjs-2');
   Chart.register(...registerables);
   Line = WebLine;
   Pie = WebPie;

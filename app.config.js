@@ -14,21 +14,37 @@ module.exports = {
     ios: {
       supportsTablet: true,
       bundleIdentifier: 'com.yourcompany.wip',
-      newArchEnabled: true
+      newArchEnabled: true,
+      config: {
+        googleMapsApiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY
+      }
     },
     android: {
       adaptiveIcon: {
         backgroundColor: '#ffffff'
       },
-      package: 'com.yourcompany.wip'
+      package: 'com.yourcompany.wip',
+      config: {
+        googleMaps: {
+          apiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY
+        }
+      }
     },
     web: {
       bundler: 'metro',
       output: 'static'
     },
-    plugins: ['expo-router'],
+    plugins: [
+      'expo-router',
+      [
+        'expo-location',
+        {
+          locationAlwaysAndWhenInUsePermission: "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ],
     experiments: {
-      typedRoutes: true,
+      typedRoutes: true,      
       tsconfigPaths: true
     },
     extra: {

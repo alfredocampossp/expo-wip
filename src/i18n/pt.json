@@ -8,7 +8,8 @@
         "limit": "Limite de armazenamento excedido",
         "upload": "Erro ao fazer upload do arquivo"
       },
-      "registration": "Erro ao registrar"
+      "registration": "Erro ao registrar",
+      "loading": "Carregando..."
     },
     "success": {
       "profileSaved": "Perfil salvo com sucesso",
@@ -29,7 +30,8 @@
       "enabled": "Ativado",
       "disabled": "Desativado",
       "completeProfile": "Completar Perfil",
-      "register": "Registrar"
+      "register": "Registrar",
+      "confirm": "Confirmar"
     }
   },
   "auth": {
@@ -39,7 +41,9 @@
     "error": {
       "emptyFields": "Preencha todos os campos obrigatórios",
       "passwordMismatch": "As senhas não coincidem",
-      "registration": "Erro ao registrar"
+      "registration": "Erro ao registrar",
+      "invalid": "Email ou senha inválidos",
+      "userNotFound": "Usuário não encontrado"
     }
   },
   "screens": {
@@ -89,6 +93,7 @@
       "maximumCache": "Cachê Máximo",
       "mainCity": "Cidade Principal",
       "coverageRadius": "Raio de Cobertura",
+      "coverageRadiusDisabled": "Raio de cobertura disponível apenas em planos pagos",
       "genres": "Gêneros Musicais",
       "description": "Descrição"
     },
@@ -121,10 +126,14 @@
   },
   "events": {
     "title": "Eventos",
+    "myEvents": {
+      "title": "Meus Eventos"
+    },
     "createButton": "Criar Evento",
     "create": {
       "title": "Criar Evento",
-      "submit": "Criar Evento"
+      "submit": "Criar Evento",
+      "button": "Criar Evento"
     },
     "form": {
       "title": "Título do Evento",
@@ -145,8 +154,18 @@
       "open": "Aberto",
       "closed": "Encerrado",
       "canceled": "Cancelado",
-      "completed": "Concluído"
+      "completed": "Concluído",
+      "aberto": "Aberto",
+      "encerrado": "Encerrado",
+      "cancelado": "Cancelado",
+      "concluido": "Concluído"
     },
+    "tabs": {
+      "calendar": "Calendário",
+      "confirmed": "Confirmados",
+      "pending": "Pendentes"
+    },
+    "planLimit": "Eventos: {{current}}/{{max}}",
     "cache": "Cachê",
     "apply": "Candidatar-se",
     "viewCandidacies": "Ver Candidaturas",
@@ -155,14 +174,15 @@
       "eventTypeRestricted": "Este tipo de evento é restrito a planos pagos",
       "styleLimit": "O plano gratuito permite apenas um estilo musical",
       "noCredits": "Sem créditos disponíveis",
-      "alreadyApplied": "Você já se candidatou a este evento"
+      "alreadyApplied": "Você já se candidatou a este evento",
+      "limitReached": "Você atingiu o limite de eventos do plano gratuito"
     },
     "success": {
       "created": "Evento criado com sucesso",
       "applied": "Candidatura enviada com sucesso",
       "statusUpdated": "Status atualizado com sucesso",
-      "approved": "Candidatura aprovada",
-      "rejected": "Candidatura rejeitada"
+      "approved": "Candidatura aprovada com sucesso",
+      "rejected": "Candidatura rejeitada com sucesso"
     },
     "candidacies": {
       "title": "Candidaturas",
@@ -195,14 +215,21 @@
     "sortRating": "Avaliação",
     "sortDistance": "Distância",
     "submit": "Buscar",
-    "noResults": "Nenhum resultado encontrado",
-    "cache": "Cachê"
+    "noResults": "Nenhum resultado encontrado"
   },
   "agenda": {
-    "title": "Agenda",
-    "addBlock": "Adicionar Bloco de Tempo",
+    "title": "Agenda do Artista",
+    "tabs": {
+      "calendar": "Calendário",
+      "confirmed": "Confirmados",
+      "pending": "Pendentes"
+    },
+    "addBlock": "Adicionar Indisponibilidade",
+    "addUnavailability": "Adicionar Indisponibilidade",
     "startDate": "Data Inicial",
     "endDate": "Data Final",
+    "notes": "Observações (Opcional)",
+    "notesPlaceholder": "Adicione observações sobre esta indisponibilidade...",
     "blocksLimit": "Usando {{current}}/{{max}} blocos",
     "available": "Disponível",
     "unavailable": "Indisponível",
@@ -210,12 +237,19 @@
       "free": "Livre",
       "busy": "Ocupado"
     },
+    "noConfirmedEvents": "Nenhum evento confirmado",
+    "noPendingEvents": "Nenhuma candidatura pendente",
+    "cancelCandidacy": "Cancelar Candidatura",
+    "success": {
+      "candidacyCanceled": "Candidatura cancelada com sucesso"
+    },
     "error": {
       "maxBlocks": "Limite máximo de blocos atingido",
       "invalidDates": "Datas inválidas",
       "endBeforeStart": "Data final deve ser posterior à inicial",
       "dateConflict": "Conflito com bloco existente",
-      "deleteBusy": "Não é possível excluir um bloco ocupado"
+      "deleteBusy": "Não é possível excluir um bloco ocupado",
+      "editBusy": "Não é possível editar um bloco ocupado"
     }
   },
   "autoOffer": {
@@ -277,7 +311,8 @@
     "type": {
       "chat": "Nova Mensagem",
       "event": "Atualização de Evento",
-      "candidacy": "Atualização de Candidatura"
+      "candidacy": "Atualização de Candidatura",
+      "admin-broadcast": "Mensagem do Administrador"
     }
   },
   "reviews": {
@@ -302,6 +337,7 @@
     "accessDenied": "Acesso Negado",
     "notAuthorized": "Você não está autorizado a acessar esta área",
     "menu": {
+      "dashboard": "Dashboard",
       "styles": "Estilos Musicais",
       "eventTypes": "Tipos de Evento",
       "feedbackCriteria": "Critérios de Feedback",
@@ -324,7 +360,13 @@
         "total": "Total de Eventos",
         "shows": "Shows",
         "festivals": "Festivais",
-        "newEvents": "Novos Eventos"
+        "newEvents": "Novos Eventos",
+        "status": {
+          "aberto": "Aberto",
+          "encerrado": "Encerrado",
+          "cancelado": "Cancelado",
+          "concluido": "Concluído"
+        }
       },
       "ratings": {
         "title": "Avaliações",
@@ -338,8 +380,10 @@
     "styles": {
       "title": "Estilos Musicais",
       "form": {
-        "name": "Nome do Estilo",
-        "namePlaceholder": "Digite o nome do estilo"
+        "name": "Nome*",
+        "namePlaceholder": "Digite o nome do estilo",
+        "description": "Descrição (opcional)",
+        "descriptionPlaceholder": "Digite uma descrição"
       },
       "status": {
         "active": "Ativo",
@@ -360,12 +404,13 @@
     "eventTypes": {
       "title": "Tipos de Evento",
       "form": {
-        "name": "Nome do Tipo",
+        "name": "Nome*",
         "namePlaceholder": "Digite o nome do tipo",
-        "description": "Descrição",
-        "descriptionPlaceholder": "Digite a descrição",
-        "plans": "Planos Disponíveis"
+        "description": "Descrição (opcional)",
+        "descriptionPlaceholder": "Digite uma descrição",
+        "maxArtists": "Quantidade de Artistas*"
       },
+      "maxArtists": "{{count}} artista(s)",
       "status": {
         "active": "Ativo",
         "inactive": "Inativo"
@@ -411,9 +456,17 @@
         "storageLimit": "Limite de Armazenamento (MB)",
         "credits": "Créditos Mensais",
         "price": "Preço",
+        "stripeProduct": "ID do Produto (Stripe)",
+        "stripePrice": "ID do Preço (Stripe)",
+        "profileType": "Tipo de Perfil",
+        "isDefault": "Plano Padrão?",
         "eventTypes": "Tipos de Evento Permitidos",
         "features": "Recursos",
         "featuresPlaceholder": "Um recurso por linha"
+      },
+      "profileType": {
+        "artist": "Artista",
+        "contractor": "Contratante"
       },
       "storage": "Armazenamento",
       "credits": "Créditos",
@@ -421,7 +474,17 @@
       "eventTypes": "Tipos de Evento",
       "status": {
         "active": "Ativo",
-        "inactive": "Inativo"
+        "inactive": "Inativo",
+        "default": "Padrão"
+      },
+      "logs": {
+        "title": "Histórico de Alterações",
+        "action": {
+          "create": "Criação",
+          "update": "Atualização",
+          "activate": "Ativação",
+          "deactivate": "Desativação"
+        }
       },
       "success": {
         "created": "Plano criado com sucesso",

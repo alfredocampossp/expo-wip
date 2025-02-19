@@ -3,7 +3,7 @@ import { View, Text, TextInput, StyleSheet, Platform, KeyboardAvoidingView } fro
 import { Button } from '../src/components/Button';
 import { auth, db } from '../src/services/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,7 +17,7 @@ export default function LoginScreen() {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      setError(i18n.t('auth.error.emptyFields'));
+      setError('Preencha todos os campos');
       return;
     }
 
@@ -25,26 +25,47 @@ export default function LoginScreen() {
     setError('');
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
+      // 1. Autenticar com Firebase
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      
+      // 2. Buscar dados do usuário
       const userDoc = await getDoc(doc(db, 'users', user.uid));
       
       if (!userDoc.exists()) {
-        await setDoc(doc(db, 'users', user.uid), {
-          email: user.email,
-          role: 'artist',
-          planId: 'free',
-          createdAt: new Date(),
-        });
-        router.replace('/home-artist');
-      } else {
-        const userData = userDoc.data();
-        router.replace(userData.role === 'artist' ? '/home-artist' : '/home-contractor');
+        setError('Usuário não encontrado');
+        setLoading(false);
+        return;
       }
-    } catch (error: any) {
-      setError(i18n.t('auth.error.invalid'));
-    } finally {
+
+      // 3. Obter dados do usuário
+      const userData = userDoc.data();
+      const userRole = userData.role;
+
+      // 4. Redirecionar baseado no role
+      if (!userRole) {
+        setError('Tipo de usuário não definido');
+        setLoading(false);
+        return;
+      }
+
+      // 5. Verificar rota com base no role
+      switch (userRole) {
+        case 'artist':
+          router.replace('/home-artist');
+          break;
+        case 'contractor':
+          router.replace('/home-contractor');
+          break;
+        case 'admin':
+          router.replace('/admin/dashboard');
+          break;
+        default:
+          setError('Tipo de usuário inválido');
+          setLoading(false);
+      }
+    } catch (error) {
+      console.error('Erro no login:', error);
+      setError('Email ou senha inválidos');
       setLoading(false);
     }
   };
@@ -58,7 +79,7 @@ export default function LoginScreen() {
         <View style={styles.card}>
           <View style={styles.header}>
             <Ionicons name="musical-notes" size={48} color="#007AFF" />
-            <Text style={styles.title}>{i18n.t('screens.login.title')}</Text>
+            <Text style={styles.title}>Login</Text>
           </View>
 
           {error ? (
@@ -72,7 +93,7 @@ export default function LoginScreen() {
               <Ionicons name="mail-outline" size={20} color="#666" style={styles.inputIcon} />
               <TextInput
                 style={styles.input}
-                placeholder={i18n.t('auth.email')}
+                placeholder="Email"
                 value={email}
                 onChangeText={setEmail}
                 autoCapitalize="none"
@@ -85,7 +106,7 @@ export default function LoginScreen() {
               <Ionicons name="lock-closed-outline" size={20} color="#666" style={styles.inputIcon} />
               <TextInput
                 style={styles.input}
-                placeholder={i18n.t('auth.password')}
+                placeholder="Senha"
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry
@@ -94,16 +115,18 @@ export default function LoginScreen() {
             </View>
 
             <Button
-              title={i18n.t('common.button.login')}
+              title={loading ? "Entrando..." : "Entrar"}
               onPress={handleLogin}
               disabled={loading}
+              icon={<Ionicons name="log-in-outline" size={20} color="#FFF" />}
             />
 
             <Button
-              title={i18n.t('screens.login.createAccount')}
+              title="Criar Conta"
               onPress={() => router.push('/register')}
               variant="secondary"
               disabled={loading}
+              icon={<Ionicons name="person-add-outline" size={20} color="#007AFF" />}
             />
           </View>
         </View>

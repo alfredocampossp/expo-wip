@@ -38,14 +38,12 @@ export default function RootLayout() {
 
   const setupNotificationListeners = () => {
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-      // Handle received notification
       console.log('Notification received:', notification);
     });
 
     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
       const data = response.notification.request.content.data;
 
-      // Handle notification tap
       if (data.type === 'chat' && data.chatId) {
         router.push(`/chat/${data.chatId}`);
       } else if (data.type === 'event' && data.eventId) {
@@ -80,6 +78,8 @@ export default function RootLayout() {
           <Stack.Screen name="notifications" />
           <Stack.Screen name="chats" />
           <Stack.Screen name="chat/[id]" />
+          <Stack.Screen name="artist-agenda" />
+          <Stack.Screen name="admin" />
         </Stack>
         <StatusBar style="auto" />
       </ErrorBoundary>
